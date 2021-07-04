@@ -28,7 +28,9 @@
 					<sl-menu-item value="option-3">Option 3</sl-menu-item>
 				</sl-select>
 				<sl-input name="size" type="text" label="Test" placeholder="placeholder" required="true">
-					<div slot="help-text">help text not selectable</div>
+					<div slot="help-text">
+						Unable to select text via double click or click&drag in Chromium
+					</div>
 				</sl-input>
 			</div>
 		</sl-tab-panel>
