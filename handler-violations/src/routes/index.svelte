@@ -1,50 +1,45 @@
-<script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+<script>
+	import Form from './Form.svelte';
+	import Buttons from './Buttons.svelte';
 
-	let name = 'world';
-	let option = 'option-2';
-	let openButton;
-	let closeButton;
+	import Drawer from '../drawer/Drawer.svelte';
+	import DrawerBody from '../drawer/DrawerBody.svelte';
+	import DrawerHeader from '../drawer/DrawerHeader.svelte';
+	import DrawerContent from '../drawer/DrawerContent.svelte';
 
-	onMount(() => {
-		const drawer = document.querySelector('.drawer-overview');
-
-		openButton.addEventListener('click', () => drawer.show());
-		closeButton.addEventListener('click', () => drawer.hide());
-	});
+	let drawer1, btn1;
 </script>
 
-<h1>Hello {name}!</h1>
+<Drawer label="Drawer 1" bind:this={drawer1}>
+	<DrawerBody>
+		<DrawerContent>
+			<DrawerHeader>
+				<h2>Panels</h2>
+			</DrawerHeader>
 
-<sl-drawer label="Drawer" class="drawer-overview">
-	<sl-tab-group>
-		<sl-tab slot="nav" panel="general">General</sl-tab>
-		<sl-tab-panel name="general">
-			<div class="grid">
-				<sl-input placeholder="Type something" value={name} />
-				<sl-select placeholder="Select one" value={option}>
-					<sl-menu-item value="option-1">Option 1</sl-menu-item>
-					<sl-menu-item value="option-2">Option 2</sl-menu-item>
-					<sl-menu-item value="option-3">Option 3</sl-menu-item>
-				</sl-select>
-				<sl-input name="size" type="text" label="Test" placeholder="placeholder" required="true">
-					<div slot="help-text">
-						Unable to select text via double click or click&drag in Chromium
-					</div>
-				</sl-input>
-			</div>
-		</sl-tab-panel>
-	</sl-tab-group>
+			<sl-tab-group>
+				<sl-tab slot="nav" panel="empty">Empty tab</sl-tab>
+				<sl-tab slot="nav" panel="general">General</sl-tab>
+				<sl-tab slot="nav" panel="advanced">Advanced</sl-tab>
 
-	<sl-button slot="footer" type="primary" bind:this={closeButton}>Close</sl-button>
-</sl-drawer>
+				<sl-tab-panel name="empty" />
+				<sl-tab-panel name="general">
+					<Buttons />
+				</sl-tab-panel>
+				<sl-tab-panel name="advanced">
+					<Form />
+				</sl-tab-panel>
+			</sl-tab-group>
+		</DrawerContent>
+	</DrawerBody>
+</Drawer>
 
-<sl-button bind:this={openButton}>Open Drawer</sl-button>
+<sl-button class="btn-drawer1" on:click={() => drawer1.show()} bind:this={btn1}
+	>Open Drawer 1</sl-button
+>
 
 <style>
-	.grid {
-		display: grid;
-		grid-auto-flow: row;
-		grid-gap: 2rem;
+	sl-tab-panel {
+		--padding: 1rem;
 	}
 </style>
