@@ -1,9 +1,4 @@
 <script>
-	import Drawer from '../drawer/Drawer.svelte';
-	import DrawerBody from '../drawer/DrawerBody.svelte';
-	import DrawerHeader from '../drawer/DrawerHeader.svelte';
-	import DrawerContent from '../drawer/DrawerContent.svelte';
-
 	let drawer2;
 	let items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	let selected;
@@ -28,13 +23,12 @@
 			</div>
 
 			<div class="title">
-				<span class="name">{item}</span>
+				<span class="name">click here {item}</span>
 				<br />
 				<small class="subtitle">
 					{#if item}
-						<span>{item}, </span>
+						<span>click here {item}</span>
 					{/if}
-					<span>qty: {item}</span>
 				</small>
 			</div>
 
@@ -52,31 +46,27 @@
 	{/each}
 </div>
 
-<Drawer label="Drawer 2" bind:this={drawer2}>
-	<DrawerBody>
-		<DrawerContent>
-			<DrawerHeader>
-				<h2>
-					{selected}
-				</h2>
-			</DrawerHeader>
+<sl-drawer label="Drawer 2" bind:this={drawer2}>
+	{#if selected}
+		<h2>
+			{selected}
+		</h2>
 
-			<sl-form class="form-overview">
-				<sl-input name="name" type="text" label="Name" />
-				<br />
-				<sl-select name="favorite" label="Select your favorite">
-					<sl-menu-item value="birds">Birds</sl-menu-item>
-					<sl-menu-item value="cats">Cats</sl-menu-item>
-					<sl-menu-item value="dogs">Dogs</sl-menu-item>
-				</sl-select>
-				<br />
-				<sl-checkbox name="agree" value="yes"> I totally agree </sl-checkbox>
-				<br /><br />
-				<sl-button submit>Submit</sl-button>
-			</sl-form>
-		</DrawerContent>
-	</DrawerBody>
-</Drawer>
+		<sl-form class="form-overview">
+			<sl-input name="name" type="text" label="Name" />
+			<br />
+			<sl-select name="favorite" label="Select your favorite">
+				<sl-menu-item value="birds">Birds</sl-menu-item>
+				<sl-menu-item value="cats">Cats</sl-menu-item>
+				<sl-menu-item value="dogs">Dogs</sl-menu-item>
+			</sl-select>
+			<br />
+			<sl-checkbox name="agree" value="yes"> I totally agree </sl-checkbox>
+			<br /><br />
+			<sl-button submit>Submit</sl-button>
+		</sl-form>
+	{/if}
+</sl-drawer>
 
 <style>
 	.buttons {
