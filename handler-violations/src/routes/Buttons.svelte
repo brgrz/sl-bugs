@@ -47,25 +47,31 @@
 </div>
 
 <sl-drawer label="Drawer 2" bind:this={drawer2}>
-	{#if selected}
-		<h2>
-			{selected}
-		</h2>
+	<div class="drawer-content">
+		{#if selected}
+			<div class="drawer-header">
+				<h2>
+					{selected}
+				</h2>
+			</div>
 
-		<sl-form class="form-overview">
-			<sl-input name="name" type="text" label="Name" />
-			<br />
-			<sl-select name="favorite" label="Select your favorite">
-				<sl-menu-item value="birds">Birds</sl-menu-item>
-				<sl-menu-item value="cats">Cats</sl-menu-item>
-				<sl-menu-item value="dogs">Dogs</sl-menu-item>
-			</sl-select>
-			<br />
-			<sl-checkbox name="agree" value="yes"> I totally agree </sl-checkbox>
-			<br /><br />
-			<sl-button submit>Submit</sl-button>
-		</sl-form>
-	{/if}
+			<div class="drawer-body">
+				<sl-form class="form-overview">
+					<sl-input name="name" type="text" label="Name" />
+					<br />
+					<sl-select name="favorite" label="Select your favorite">
+						<sl-menu-item value="birds">Birds</sl-menu-item>
+						<sl-menu-item value="cats">Cats</sl-menu-item>
+						<sl-menu-item value="dogs">Dogs</sl-menu-item>
+					</sl-select>
+					<br />
+					<sl-checkbox name="agree" value="yes"> I totally agree </sl-checkbox>
+					<br /><br />
+					<sl-button submit>Submit</sl-button>
+				</sl-form>
+			</div>
+		{/if}
+	</div>
 </sl-drawer>
 
 <style>
