@@ -7,6 +7,10 @@
 		selected = item;
 		drawer2.show();
 	};
+
+	const onDrawerHidden = (event) => {
+		selected = undefined;
+	};
 </script>
 
 <div class="buttons">
@@ -46,7 +50,7 @@
 	{/each}
 </div>
 
-<sl-drawer label="Drawer 2" bind:this={drawer2}>
+<sl-drawer label="Drawer 2" bind:this={drawer2} on:sl-hide|self={onDrawerHidden}>
 	<div class="drawer-content">
 		{#if selected}
 			<div class="drawer-header">
